@@ -1,13 +1,28 @@
+import type { ReactNode } from "react";
+import "./Cart.css";
+
 type CardProps = {
   title: string;
-  children: React.ReactNode;
+  description: string;
+  image?: string;
+  children?: ReactNode;
 };
 
-function Card({ title, children }: CardProps) {
+function Card({
+  title,
+  description,
+  image,
+  children,
+}: CardProps) {
   return (
-    <div>
+    <div className="card">
+      {image && <img src={image} alt={title} />}
+
       <h2>{title}</h2>
-      <div>{children}</div>
+
+      <p>{description}</p>
+
+      {children && <div>{children}</div>}
     </div>
   );
 }
